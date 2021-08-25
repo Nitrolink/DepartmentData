@@ -137,8 +137,8 @@ function main(){
     departmentAssociation();
     salaryAssociation();
 
-    //Comment out other Challenges to test specific ones
 
+    //Comment out other Challenges to test specific ones
     challenge1();
     challenge2();
     challenge3();
