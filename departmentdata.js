@@ -11,6 +11,7 @@ let employeeDepartments = [];
 let employees = [];
 let salaries = [];
 let employeesList = [];
+let master
 
 class Employee {
     constructor(empID,fName,lName,gender){
@@ -26,8 +27,14 @@ class Employee {
 }
 
 function splitProcessing(endArray,startText){
-
-    let tempSplit = startText.split("\n");
+    let tempSplit;
+    if(master){
+        tempSplit = startText.split("\r\n");
+    }
+    else{
+        tempSplit = startText.split("\n");
+    }
+    
     for(let i of tempSplit){
         endArray.push(i.split(","));
     }
@@ -128,6 +135,7 @@ function challenge5(){
 
 
 function main(){
+    master = true;
     splitProcessing(departments,departmentsTxt);
     splitProcessing(employeeDepartments,employeeDepartmentsTxt);
     splitProcessing(employees,employeesTxt);
