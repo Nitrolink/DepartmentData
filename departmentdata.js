@@ -26,6 +26,7 @@ class Employee {
     }
 }
 
+
 function splitProcessing(endArray,startText){
     let tempSplit;
     if(master){
@@ -76,16 +77,21 @@ function salaryAssociation(){
 
 
 } 
+function departmentCountFix(){
+    for(let dep of departments){
+        dep[2] = 0
+    }
+}
 
-function challenge1(){
+
+function challenge1x1(){
     //1
     console.log("\nList of first 40 Employees");
     for(var i = 0; i < 40; i++){
         console.log("Name: " + employeesList[i].fName + " " + employeesList[i].lName);
     }
 }
-
-function challenge2(){
+function challenge1x2(){
     //2
     console.log("\nList of Employees and the Department in which they work if they have a salary of over $60000")
     for(var i = 0; i < 40; i++){
@@ -98,8 +104,7 @@ function challenge2(){
         }
     }
 }
-
-function challenge3(){
+function challenge1x3(){
     //3
     console.log("\nList of Former Employees and their Last Day of Work");
     for(var i = 0; i < 40; i++){
@@ -110,8 +115,7 @@ function challenge3(){
     }
 
 }
-
-function challenge4(){
+function challenge1x4(){
     //4
     console.log("\nList of Employees who have Switched Departments");
     for(var i = 0; i < 40; i++){
@@ -121,8 +125,7 @@ function challenge4(){
 
     }
 }
-
-function challenge5(){
+function challenge1x5(){
     //5
     console.log("\nList of Employees who have Recieved Raises")
     for(var i = 0; i < 40; i++){
@@ -132,6 +135,85 @@ function challenge5(){
     }
 }
 
+function challenge2x1(){
+    //1
+    let males = 0;
+    let females = 0;
+    console.log("\nNumber of Females and Males in the Company")
+    for(let emp of employeesList){
+        if(emp.gender == "M"){
+            males++;
+        }
+        else if(emp.gender == "F"){
+            females++
+        }
+    }
+    console.log("Females: " + females + ", Males: " + males)
+}
+function challenge2x2(){
+    console.log("\nNumber of Employees in each Department")
+    for(let dep of departments){
+        for(var i = 0; i < 40; i++){
+            if(employeesList[i].depNum[employeesList[i].depNum.length - 1] == dep[0]){
+                dep[2] += 1
+            }
+        }
+        console.log(dep[1] + ": " + dep[2])
+    }
+}
+function challenge2x3(){
+    console.log("\nGender Ratio in each Department")
+    for(let dep of departments){
+        let males = 0;
+        let females = 0;
+        for(var i = 0; i < 40; i++){
+            if(employeesList[i].depNum[employeesList[i].depNum.length - 1] == dep[0]){
+                if(employeesList[i].gender == "M"){
+                    males++;
+                }
+                else if(employeesList[i].gender == "F"){
+                    females++
+                }
+            }
+        }
+        console.log(dep[1] + ": Males : " + males + ", Females: " + females)
+    }
+}
+function challenge2x4(){
+    console.log("\nTotal Salary of each Department")
+    for(let dep of departments){
+        let depSalary = 0;
+        for(var i = 0; i < 40; i++){
+            if(employeesList[i].depNum[employeesList[i].depNum.length - 1] == dep[0]){
+                if(employeesList[i].salary.length > 0){
+                    depSalary += parseInt(employeesList[i].salary[employeesList[i].salary.length - 1])
+                }
+            }
+        }
+        console.log(dep[1] + ": Salary $" + depSalary)
+    }
+}
+function challenge2x5(){
+    console.log("\nTotal Salary of each Department split by Gender")
+    for(let dep of departments){
+        let maleSalary = 0;
+        let femaleSalary = 0;
+        for(var i = 0; i < 40; i++){
+            if(employeesList[i].depNum[employeesList[i].depNum.length - 1] == dep[0]){
+                if(employeesList[i].salary.length > 0){
+                    if(employeesList[i].gender == "M"){
+                        maleSalary += parseInt(employeesList[i].salary[employeesList[i].salary.length - 1])
+                    }
+                    else if(employeesList[i].gender == "F"){
+                        femaleSalary += parseInt(employeesList[i].salary[employeesList[i].salary.length - 1])
+                    }
+                   
+                }
+            }
+        }
+        console.log(dep[1] + ": Male: $" + maleSalary + ", Female: $" + femaleSalary);
+    }
+}
 
 
 function main(){
@@ -144,14 +226,24 @@ function main(){
     employeeCreation();
     departmentAssociation();
     salaryAssociation();
-
+    departmentCountFix();
 
     //Comment out other Challenges to test specific ones
-    challenge1();
-    challenge2();
-    challenge3();
-    challenge4();
-    challenge5();
+
+    //Challenge Set 1
+    //challenge1x1();
+    //challenge1x2();
+    //challenge1x3();
+    //challenge1x4();
+    //challenge1x5();
+
+
+    //Challenge Set 2
+    challenge2x1();
+    challenge2x2();
+    challenge2x3();
+    challenge2x4();
+    challenge2x5();
 }
 
 
