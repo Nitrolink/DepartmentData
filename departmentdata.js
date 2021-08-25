@@ -27,7 +27,7 @@ class Employee {
 
 function splitProcessing(endArray,startText){
 
-    let tempSplit = startText.split("\r\n");
+    let tempSplit = startText.split("\n");
     for(let i of tempSplit){
         endArray.push(i.split(","));
     }
